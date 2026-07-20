@@ -1,0 +1,11 @@
+node_modules/**
+dist/*.map
+.gitignore
+src/**
+tsconfig.json
+build.js
+package-lock.json
+.git/**
+.vscode/**
+*.map
+agents.md

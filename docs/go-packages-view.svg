@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="380" viewBox="0 0 520 380">
+  <!-- Dark theme background -->
+  <rect width="520" height="380" fill="#1E1E1E" rx="4"/>
+
+  <!-- Title bar -->
+  <rect x="0" y="0" width="520" height="34" fill="#3C3C3C" rx="4"/>
+  <rect x="0" y="30" width="520" height="4" fill="#3C3C3C"/>
+  <text x="14" y="22" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="12" font-weight="600" fill="#CCCCCC">GO PACKAGES</text>
+  <text x="466" y="22" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="11" fill="#858585">↻</text>
+
+  <!-- Root package: cmds/c1 (blue folder) -->
+  <rect x="20" y="46" width="14" height="12" rx="1" fill="#00ADD8"/>
+  <rect x="20" y="46" width="8" height="4" rx="1" fill="#007D9E"/>
+  <text x="40" y="57" font-family="Menlo,Consolas,monospace" font-size="12" fill="#E7E7E7" font-weight="600">cmds/c1</text>
+  <rect x="120" y="48" width="36" height="12" rx="6" fill="#2D7D46"/>
+  <text x="125" y="57" font-family="Menlo,Consolas,monospace" font-size="9" fill="#FFFFFF">main</text>
+
+  <!-- main.go -->
+  <rect x="44" y="70" width="12" height="14" rx="1" fill="#E8F8FF" stroke="#00ADD8" stroke-width="0.5"/>
+  <rect x="44" y="70" width="12" height="4" rx="1" fill="#00ADD8"/>
+  <text x="62" y="82" font-family="Menlo,Consolas,monospace" font-size="12" fill="#CCCCCC">main.go</text>
+
+  <!-- utils/redis (blue folder, internal) -->
+  <rect x="34" y="96" width="14" height="12" rx="1" fill="#00ADD8"/>
+  <rect x="34" y="96" width="8" height="4" rx="1" fill="#007D9E"/>
+  <text x="54" y="107" font-family="Menlo,Consolas,monospace" font-size="12" fill="#E7E7E7">utils/redis</text>
+
+  <!-- client.go -->
+  <rect x="58" y="120" width="12" height="14" rx="1" fill="#E8F8FF" stroke="#00ADD8" stroke-width="0.5"/>
+  <rect x="58" y="120" width="12" height="4" rx="1" fill="#00ADD8"/>
+  <text x="76" y="132" font-family="Menlo,Consolas,monospace" font-size="12" fill="#CCCCCC">client.go</text>
+
+  <!-- go-redis/v9 (orange folder, external) -->
+  <rect x="48" y="146" width="14" height="12" rx="1" fill="#FF9800"/>
+  <rect x="48" y="146" width="8" height="4" rx="1" fill="#E65100"/>
+  <text x="68" y="157" font-family="Menlo,Consolas,monospace" font-size="12" fill="#E7E7E7">github.com/redis/go-redis/v9</text>
+
+  <!-- sub files under go-redis -->
+  <rect x="72" y="170" width="12" height="14" rx="1" fill="#E8F8FF" stroke="#00ADD8" stroke-width="0.5"/>
+  <rect x="72" y="170" width="12" height="4" rx="1" fill="#00ADD8"/>
+  <text x="90" y="182" font-family="Menlo,Consolas,monospace" font-size="12" fill="#CCCCCC">commands.go</text>
+
+  <rect x="72" y="190" width="12" height="14" rx="1" fill="#E8F8FF" stroke="#00ADD8" stroke-width="0.5"/>
+  <rect x="72" y="190" width="12" height="4" rx="1" fill="#00ADD8"/>
+  <text x="90" y="202" font-family="Menlo,Consolas,monospace" font-size="12" fill="#CCCCCC">redis.go</text>
+
+  <rect x="72" y="210" width="12" height="14" rx="1" fill="#E8F8FF" stroke="#00ADD8" stroke-width="0.5"/>
+  <rect x="72" y="210" width="12" height="4" rx="1" fill="#00ADD8"/>
+  <text x="90" y="222" font-family="Menlo,Consolas,monospace" font-size="12" fill="#CCCCCC">pubsub.go</text>
+
+  <rect x="72" y="230" width="12" height="14" rx="1" fill="#E8F8FF" stroke="#00ADD8" stroke-width="0.5"/>
+  <rect x="72" y="230" width="12" height="4" rx="1" fill="#00ADD8"/>
+  <text x="90" y="242" font-family="Menlo,Consolas,monospace" font-size="12" fill="#858585">options.go</text>
+
+  <!-- ... more -->
+  <text x="72" y="262" font-family="Menlo,Consolas,monospace" font-size="12" fill="#585858">...</text>
+
+  <!-- Legend -->
+  <text x="20" y="300" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="11" fill="#858585">━━━━━━━━━━━━━━━━━━━━━━━━━━━</text>
+  <rect x="20" y="314" width="12" height="10" rx="1" fill="#00ADD8"/>
+  <rect x="20" y="314" width="7" height="3" rx="1" fill="#007D9E"/>
+  <text x="38" y="323" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="11" fill="#858585">module package</text>
+
+  <rect x="140" y="314" width="12" height="10" rx="1" fill="#FF9800"/>
+  <rect x="140" y="314" width="7" height="3" rx="1" fill="#E65100"/>
+  <text x="158" y="323" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="11" fill="#858585">third-party dependency</text>
+</svg>

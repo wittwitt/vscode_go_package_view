@@ -1,0 +1,127 @@
+{
+  "name": "go-package-view",
+  "displayName": "Go Package View",
+  "description": "Explore Go project with package dependency in the Explorer sidebar",
+  "version": "0.1.1",
+  "publisher": "Witt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wittwitt/vscode_go_package_view.git"
+  },
+  "engines": {
+    "vscode": "^1.125.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:goPackageView"
+  ],
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "goPackageView",
+          "name": "Go Packages"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Go Package View",
+      "properties": {
+        "goPackageView.autoRefresh": {
+          "type": "boolean",
+          "default": true,
+          "description": "Auto-refresh dependency tree when go.mod or source files change"
+        },
+        "goPackageView.maxDepth": {
+          "type": "number",
+          "default": 0,
+          "description": "Max depth for tree expansion (0 = unlimited)"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "goPackageView.copyImportPath",
+        "title": "Copy Import Path"
+      },
+      {
+        "command": "goPackageView.openInTerminal",
+        "title": "Open in Terminal"
+      },
+      {
+        "command": "goPackageView.revealFileInOS",
+        "title": "Reveal in Finder"
+      },
+      {
+        "command": "goPackageView.newFile",
+        "title": "New File"
+      },
+      {
+        "command": "goPackageView.newSubdirectory",
+        "title": "New Subdirectory"
+      },
+      {
+        "command": "goPackageView.deleteFolder",
+        "title": "Delete Folder"
+      }
+    ],
+    "menus": {
+      "view/item/context": [
+        {
+          "view": "goPackageView",
+          "when": "viewItem == goPackage",
+          "command": "goPackageView.copyImportPath",
+          "group": "1_copy"
+        },
+        {
+          "view": "goPackageView",
+          "when": "viewItem == goPackage",
+          "command": "goPackageView.openInTerminal",
+          "group": "2_terminal"
+        },
+        {
+          "view": "goPackageView",
+          "when": "viewItem == goFile",
+          "command": "goPackageView.revealFileInOS",
+          "group": "navigation"
+        },
+        {
+          "view": "goPackageView",
+          "when": "viewItem == goPackage",
+          "command": "goPackageView.newFile",
+          "group": "3_new_file"
+        },
+        {
+          "view": "goPackageView",
+          "when": "viewItem == goPackage",
+          "command": "goPackageView.newSubdirectory",
+          "group": "4_new_dir"
+        },
+        {
+          "view": "goPackageView",
+          "when": "viewItem == goPackage",
+          "command": "goPackageView.deleteFolder",
+          "group": "5_delete"
+        }
+      ]
+    }
+  },
+  "main": "./dist/extension.js",
+  "scripts": {
+    "build": "node build.js",
+    "watch": "node build.js --watch",
+    "lint": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "@types/vscode": "^1.125.0",
+    "esbuild": "^0.28.1",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "@vscode/vsce": "^3.9.2"
+  }
+}
