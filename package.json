@@ -3,7 +3,7 @@
   "displayName": "Go Package View",
   "description": "Explore Go project with package dependency in the Explorer sidebar",
   "version": "0.1.1",
-  "publisher": "Witt",
+  "publisher": "wittwitt",
   "repository": {
     "type": "git",
     "url": "https://github.com/wittwitt/vscode_go_package_view.git"
