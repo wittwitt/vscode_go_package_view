@@ -42,7 +42,7 @@ export class DataStore {
     const goModDir = findGoModDir(workspaceRoot);
     if (!goModDir) {
       log('DataStore.refresh: no go.mod found');
-      this._error = 'No go.mod found in workspace or parent directories';
+      this._error = 'No go.mod found in workspace, workspace/src, or parent directories';
       this._parsed = null;
       this._goModDir = null;
       return false;

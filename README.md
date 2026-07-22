@@ -46,7 +46,7 @@ as the root and expanding through its imports recursively.
 ## Requirements
 
 - [Go](https://go.dev/) 1.21+ installed and in `$PATH`
-- A Go project with a `go.mod` file
+- A Go project with a `go.mod` file in the workspace root or `src/`
 
 ---
 
@@ -114,7 +114,7 @@ Open the **Developer Tools** (`CMD+Shift+I`) to see `[GoPkgView]` log output.
 
 ### How it works
 
-1. Extension activation triggers `go list -json -deps ./...` in the project root
+1. Extension activation finds `go.mod` in the workspace root, `src/`, or a parent directory, then runs `go list -json -deps ./...` there
 2. Output is parsed by tracking `{`/`}` brace depth (handles multi-line JSON)
 3. Packages with `Name === "main"` become root nodes; if none found, the
    extension switches to library mode (reverse dependency tree)

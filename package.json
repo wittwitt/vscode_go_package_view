@@ -2,7 +2,7 @@
   "name": "go-package-view",
   "displayName": "Go Package View",
   "description": "Explore Go project with package dependency in the Explorer sidebar",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "wittwitt",
   "repository": {
     "type": "git",

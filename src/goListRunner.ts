@@ -12,6 +12,14 @@ export function findGoModDir(startDir: string): string | null {
       log('findGoModDir: found at', dir);
       return dir;
     }
+    if (i === 0) {
+      const srcDir = path.join(dir, 'src');
+      log('findGoModDir: checking src fallback', srcDir);
+      if (fs.existsSync(path.join(srcDir, 'go.mod'))) {
+        log('findGoModDir: found at', srcDir);
+        return srcDir;
+      }
+    }
     const parent = path.dirname(dir);
     if (parent === dir) break;
     dir = parent;
