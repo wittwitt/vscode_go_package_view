@@ -1,7 +1,7 @@
 # Go Package View
 
-A VS Code extension that adds a virtual directory tree to the Explorer sidebar,
-showing Go package dependency relationships starting from the main package.
+A VS Code extension for exploring Go package dependency relationships in a
+virtual Explorer tree and searching across all dependency source files.
 
 Instead of navigating by filesystem layout, you navigate by import dependencies,
 making it easy to understand how packages relate to each other.
@@ -36,10 +36,31 @@ as the root and expanding through its imports recursively.
 - **Colored icons** — blue folders for module-internal packages, orange folders
   for third-party dependencies
 - **Open .go files** — click any file in the tree to open it in the editor
+- **Search all dependencies** — search module, third-party, and standard-library
+  Go source files, then jump directly to a matching line
 - **Right-click actions** — Copy Import Path, Open in Terminal, New File,
   New Subdirectory, Delete Folder, Reveal in Finder
 - **Auto-refresh** — watches `go.mod`, `go.sum`, and `.go` files; automatically
   rebuilds the tree when dependencies change
+
+---
+
+## Global dependency search
+
+Search any text across every Go source file discovered by
+`go list -json -deps ./...`, including files from the current module,
+third-party modules, and the Go standard library.
+
+- Start it from anywhere with `Ctrl+Alt+G` on Windows/Linux or
+  `Cmd+Option+G` on macOS; opening the Explorer view first is not required
+- Alternatively, click the search icon in the **Go Packages** title bar or run
+  **Go Package View: Search All Dependencies** from the Command Palette
+- Search is case-insensitive, cancellable, and scans files concurrently
+- Results include the file, line number, package import path, and matching code
+- Select a result to open the source file and highlight the matching text
+- Up to 500 matches are displayed for each search
+
+<img src="docs/dependency-search.png" width="100%" alt="Global Go dependency search results in VS Code"/>
 
 ---
 
@@ -90,6 +111,7 @@ as the root and expanding through its imports recursively.
 │   ├── extension.ts       ← extension entry point, command registration
 │   ├── goListRunner.ts    ← `go list -json` execution & parsing
 │   ├── dataStore.ts       ← in-memory cache & tree building
+│   ├── dependencySearch.ts ← dependency source search & result navigation
 │   ├── treeProvider.ts    ← VS Code TreeDataProvider
 │   ├── types.ts           ← shared type definitions
 │   └── log.ts             ← console.log wrapper

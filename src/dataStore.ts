@@ -1,4 +1,5 @@
-import { GoPackageInfo, ParsedData, TreeMode } from './types';
+import { GoPackageInfo, ParsedData, SearchableGoFile, TreeMode } from './types';
+import * as path from 'path';
 import {
   runGoList,
   findGoModDir,
@@ -141,6 +142,30 @@ export class DataStore {
 
   getPackageInfo(importPath: string): GoPackageInfo | undefined {
     return this._parsed?.packages.get(importPath);
+  }
+
+  /** Return every Go source file known to `go list`, including dependencies. */
+  getSearchableFiles(): SearchableGoFile[] {
+    if (!this._parsed) return [];
+
+    const files: SearchableGoFile[] = [];
+    const seen = new Set<string>();
+    for (const [importPath, info] of this._parsed.packages) {
+      if (!info.Dir) continue;
+      const names = [
+        ...(info.GoFiles || []),
+        ...(info.CgoFiles || []),
+        ...(info.TestGoFiles || []),
+        ...(info.XTestGoFiles || []),
+      ];
+      for (const fileName of names) {
+        const filePath = path.join(info.Dir, fileName);
+        if (seen.has(filePath)) continue;
+        seen.add(filePath);
+        files.push({ filePath, fileName, importPath });
+      }
+    }
+    return files.sort((a, b) => a.filePath.localeCompare(b.filePath));
   }
 
   isInternal(importPath: string): boolean {

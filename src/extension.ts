@@ -5,6 +5,7 @@ import { DataStore } from './dataStore';
 import { GoPackageTreeProvider } from './treeProvider';
 import { log, logError } from './log';
 import { ViewElement } from './types';
+import { searchDependencies } from './dependencySearch';
 
 let dataStore: DataStore;
 let treeProvider: GoPackageTreeProvider;
@@ -31,6 +32,13 @@ export async function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerCommand('goPackageView.refresh', async () => {
       await loadAndRefresh();
+    }),
+  );
+
+  // ── Search all dependency source files ──────────────
+  context.subscriptions.push(
+    vscode.commands.registerCommand('goPackageView.searchDependencies', async () => {
+      await searchDependencies(dataStore);
     }),
   );
 

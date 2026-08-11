@@ -1,8 +1,8 @@
 {
   "name": "go-package-view",
   "displayName": "Go Package View",
-  "description": "Explore Go project with package dependency in the Explorer sidebar",
-  "version": "0.1.2",
+  "description": "Explore Go package dependencies and search across all dependency source files",
+  "version": "0.2.0",
   "publisher": "wittwitt",
   "repository": {
     "type": "git",
@@ -16,7 +16,8 @@
     "Other"
   ],
   "activationEvents": [
-    "onView:goPackageView"
+    "onView:goPackageView",
+    "onCommand:goPackageView.searchDependencies"
   ],
   "contributes": {
     "views": {
@@ -44,6 +45,18 @@
     },
     "commands": [
       {
+        "command": "goPackageView.refresh",
+        "title": "Refresh Go Packages",
+        "category": "Go Package View",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "goPackageView.searchDependencies",
+        "title": "Search All Dependencies",
+        "category": "Go Package View",
+        "icon": "$(search)"
+      },
+      {
         "command": "goPackageView.copyImportPath",
         "title": "Copy Import Path"
       },
@@ -68,7 +81,27 @@
         "title": "Delete Folder"
       }
     ],
+    "keybindings": [
+      {
+        "command": "goPackageView.searchDependencies",
+        "key": "ctrl+alt+g",
+        "mac": "cmd+alt+g",
+        "when": "workspaceFolderCount > 0"
+      }
+    ],
     "menus": {
+      "view/title": [
+        {
+          "command": "goPackageView.searchDependencies",
+          "when": "view == goPackageView",
+          "group": "navigation@1"
+        },
+        {
+          "command": "goPackageView.refresh",
+          "when": "view == goPackageView",
+          "group": "navigation@2"
+        }
+      ],
       "view/item/context": [
         {
           "view": "goPackageView",

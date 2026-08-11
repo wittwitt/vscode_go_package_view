@@ -4,6 +4,9 @@ export interface GoPackageInfo {
   Name: string;
   Standard: boolean;
   GoFiles: string[];
+  CgoFiles?: string[];
+  TestGoFiles?: string[];
+  XTestGoFiles?: string[];
   Imports: string[];
   Dir?: string;
   Module?: {
@@ -11,6 +14,12 @@ export interface GoPackageInfo {
     Main?: boolean;
     Dir?: string;
   };
+}
+
+export interface SearchableGoFile {
+  filePath: string;
+  fileName: string;
+  importPath: string;
 }
 
 // Parsed result cached in memory
