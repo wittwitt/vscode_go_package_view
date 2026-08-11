@@ -2,8 +2,9 @@
   "name": "go-package-view",
   "displayName": "Go Package View",
   "description": "Explore Go package dependencies and search across all dependency source files",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "publisher": "wittwitt",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/wittwitt/vscode_go_package_view.git"
