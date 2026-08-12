@@ -2,7 +2,8 @@
   "name": "go-package-view",
   "displayName": "Go Package View",
   "description": "Explore Go package dependencies and search across all dependency source files",
-  "version": "0.2.1",
+  "icon": "icons/go-package-view.png",
+  "version": "0.2.2",
   "publisher": "wittwitt",
   "license": "MIT",
   "repository": {
